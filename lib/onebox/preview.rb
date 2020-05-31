@@ -14,7 +14,10 @@ module Onebox
     end
 
     def to_s
-      "DUPA"
+      return "" unless engine
+      sanitize process_html engine_html
+    rescue *WEB_EXCEPTIONS
+      ""
     end
 
     def placeholder_html
