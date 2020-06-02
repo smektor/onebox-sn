@@ -13,12 +13,15 @@ module Onebox
     end
 
     def oneboxed
-      uri = URI(@url)
+      begin
+        uri = URI.parse(@url)
+      rescue URI::InvalidURIError
+        uri = URI.parse(URI.escape(@url))
+      end
+
       return unless uri.port.nil? || Onebox.options.allowed_ports.include?(uri.port)
       return unless uri.scheme.nil? || Onebox.options.allowed_schemes.include?(uri.scheme)
       ordered_engines.find { |engine| engine === uri }
-    rescue URI::InvalidURIError
-      nil
     end
   end
 end
