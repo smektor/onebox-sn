@@ -93,6 +93,7 @@ module Onebox
           nytimes.com
           photobucket.com
           pinterest.com
+          reddit.com
           reference.com
           revision3.com
           rottentomatoes.com
