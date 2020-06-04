@@ -180,6 +180,14 @@ module Onebox
       url
     end
 
+    def self.get_uri(link)
+      begin
+        uri = URI.parse(link)
+      rescue URI::InvalidURIError
+        uri = URI.parse(URI.escape(link))
+      end
+    end
+
     def self.get_absolute_image_url(src, url)
       if src && !!(src =~ /^\/\//)
         uri = URI(url)

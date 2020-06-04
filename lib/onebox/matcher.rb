@@ -13,7 +13,7 @@ module Onebox
     end
 
     def oneboxed
-      uri = URI.parse(URI.escape(@url))
+      uri = ::Onebox::Helpers.get_uri(@url)
       return unless uri.port.nil? || Onebox.options.allowed_ports.include?(uri.port)
       return unless uri.scheme.nil? || Onebox.options.allowed_schemes.include?(uri.scheme)
       ordered_engines.find { |engine| engine === uri }
