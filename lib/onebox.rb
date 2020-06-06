@@ -27,6 +27,7 @@ module Onebox
   @@options = DEFAULTS
 
   def self.preview(url, options = Onebox.options)
+    @@options = options
     # onebox does not have native caching
     unless Onebox::Helpers.blank?(options[:cache])
       warn "Onebox no longer has inbuilt caching so `cache` option will be ignored."
