@@ -19,7 +19,6 @@ module Onebox
 
       def self.default_whitelist
         %w(
-          rmf24.pl
           23hq.com
           500px.com
           8tracks.com
