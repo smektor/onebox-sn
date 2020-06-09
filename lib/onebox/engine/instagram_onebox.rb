@@ -16,6 +16,7 @@ module Onebox
 
       def data
         oembed = get_oembed
+        open_graph = get_opengraph
         permalink = clean_url.gsub("/#{oembed.author_name}/", "/")
 
         { link: permalink,
