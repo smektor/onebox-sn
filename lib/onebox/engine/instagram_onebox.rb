@@ -5,7 +5,6 @@ module Onebox
     class InstagramOnebox
       include Engine
       include StandardEmbed
-      include LayoutSupport
 
       matches_regexp(/^https?:\/\/(?:www\.)?(?:instagram\.com|instagr\.am)\/?(?:.*)\/p\/[a-zA-Z\d_-]+/)
       always_https
@@ -14,16 +13,13 @@ module Onebox
         url.scan(/^https?:\/\/(?:www\.)?(?:instagram\.com|instagr\.am)\/?(?:.*)\/p\/[a-zA-Z\d_-]+/).flatten.first
       end
 
+      def to_html
+        data
+      end
+
       def data
         oembed = get_oembed
-        open_graph = get_opengraph
-        permalink = clean_url.gsub("/#{oembed.author_name}/", "/")
-
-        { link: permalink,
-          title: "@#{oembed.author_name}",
-          image: "#{permalink}/media/?size=l",
-          description: Onebox::Helpers.truncate(oembed.title, 250)
-        }
+        oembed.html
       end
 
       protected
