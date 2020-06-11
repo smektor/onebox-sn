@@ -25,7 +25,7 @@ module Onebox
       protected
 
       def get_oembed_url
-        oembed_url = "https://api.instagram.com/oembed/?url=#{clean_url}"
+        oembed_url = "https://api.instagram.com/oembed/?url=#{clean_url}&omitscript=false"
       end
     end
   end
