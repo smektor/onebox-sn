@@ -5,7 +5,6 @@ module Onebox
     class TwitterStatusOnebox
       include Engine
       include LayoutSupport
-      include StandardEmbed
       include HTML
 
       matches_regexp(/^https?:\/\/(mobile\.|www\.)?twitter\.com\/.+?\/status(es)?\/\d+(\/(video|photo)\/\d?+)?+(\/?\?.*)?\/?$/)
