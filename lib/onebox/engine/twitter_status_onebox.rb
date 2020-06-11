@@ -149,8 +149,6 @@ module Onebox
       end
 
       def data
-        oembed = get_oembed
-        open_graph = get_opengraph
         @data ||= {
           link: link,
           tweet: tweet,
