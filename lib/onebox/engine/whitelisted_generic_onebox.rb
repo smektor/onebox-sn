@@ -17,6 +17,15 @@ module Onebox
         @whitelist ||= default_whitelist.dup
       end
 
+      def self.blacklist
+        @blacklist ||= default_blacklist.dup
+      end
+
+      def self.default_blacklist
+        %w(
+        )
+      end
+
       def self.default_whitelist
         %w(
           23hq.com
@@ -137,6 +146,12 @@ module Onebox
         )
       end
 
+      def self.priority
+        # This should not have priority over any other engine
+
+        111
+      end
+
       # Often using the `html` attribute is not what we want, like for some blogs that
       # include the entire page HTML. However for some providers like Flickr it allows us
       # to return gifv and galleries.
@@ -166,7 +181,7 @@ module Onebox
       end
 
       def self.host_matches(uri, list)
-        !!list.find { |h| %r((^|\.)#{Regexp.escape(h)}$).match(uri.host) }
+        !list.find { |h| %r((^|\.)#{Regexp.escape(h)}$).match(uri.host) }
       end
 
       def self.probable_discourse(uri)
@@ -183,7 +198,7 @@ module Onebox
 
       def self.===(other)
         other.kind_of?(URI) ?
-          host_matches(other, whitelist) || probable_wordpress(other) || probable_discourse(other) :
+          host_matches(other, blacklist) || probable_wordpress(other) || probable_discourse(other) :
           super
       end
 
