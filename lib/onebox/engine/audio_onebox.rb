@@ -15,9 +15,9 @@ module Onebox
         escaped_url = ::Onebox::Helpers.normalize_url_for_output(@url)
 
         <<-HTML
-          <video controls="" autoplay="" name="media">
+          <audio controls="controls">
             <source src="#{escaped_url}" type="audio/mpeg">
-          </vide>
+          </audio>
         HTML
       end
 
