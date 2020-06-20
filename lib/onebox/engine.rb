@@ -105,6 +105,10 @@ module Onebox
         name.split("::").last.downcase.gsub(/onebox/, "")
       end
 
+      def not_always_https
+        @https = false
+      end
+
       def always_https
         @https = true
       end
