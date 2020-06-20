@@ -35,6 +35,7 @@ module Onebox
       self.options = Onebox.options[class_name] || {}
 
       @url = link
+      @link = link
       @uri = ::Onebox::Helpers.get_uri(link)
       if always_https?
         @uri.scheme = 'https'

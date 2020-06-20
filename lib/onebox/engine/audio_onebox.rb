@@ -12,7 +12,7 @@ module Onebox
       end
 
       def to_html
-        escaped_url = ::Onebox::Helpers.normalize_url_for_output(@url)
+        escaped_url = ::Onebox::Helpers.normalize_url_for_output(@link)
 
         <<-HTML
           <audio controls="controls">
