@@ -52,7 +52,7 @@ module Onebox
           html = Onebox::Engine::WhitelistedGenericOnebox.new(@url, @timeout).to_html
           return if Onebox::Helpers.blank?(html)
           html.gsub!(/['"]\/\//, "https://")
-          html
+          add_other_class(html)
         end
       end
 
@@ -165,6 +165,10 @@ module Onebox
         end
       rescue
         {}
+      end
+
+      def add_other_class(html)
+        '<div class="yt-other">' + html + '</div>'
       end
 
     end
