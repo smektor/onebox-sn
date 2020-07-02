@@ -2,6 +2,7 @@
 
 require "cgi"
 require "onebox/open_graph"
+require 'pry'
 
 module Onebox
   module Engine
