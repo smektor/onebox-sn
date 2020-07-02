@@ -1,7 +1,7 @@
-{{#avatar}}<img src="{{avatar}}" class="thumbnail onebox-avatar tw-avatar">{{/avatar}}
-
-<h4><a href='{{link}}' class="tw-user" target='_blank' rel='noopener'>{{title}}</a></h4>
-
+<div class="tw-header">
+  {{#avatar}}<img src="{{avatar}}" class="thumbnail onebox-avatar tw-avatar">{{/avatar}}
+  <h4><a href='{{link}}' class="tw-user" target='_blank' rel='noopener'>{{title}}</a></h4>
+</div>
 <div class="tw-tweet"> {{{tweet}}}{{#quoted_tweet}}<div class="tw-quoted"><a class="tw-quoted-link" href="{{quoted_link}}"><p class="tw-quoted-title">{{quoted_full_name}} <span>@{{quoted_screen_name}}</span></p></a><div>{{quoted_tweet}}</div></div>{{/quoted_tweet}}</div>
 
 <div class='tw-date'>
