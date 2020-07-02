@@ -20,13 +20,17 @@ module Onebox
 
       def data
         oembed = get_oembed
-        oembed.html
+        add_stimulus_controller(oembed.html)
       end
 
       protected
 
       def get_oembed_url
         oembed_url = "https://publish.twitter.com/oembed?url=#{clean_url}"
+      end
+
+      def add_stimulus_controller(html)
+        '<div data-controller="twitter">' + html + '</div>'
       end
     end
   end
