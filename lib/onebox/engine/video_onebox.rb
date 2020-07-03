@@ -20,7 +20,7 @@ module Onebox
         escaped_url = ::Onebox::Helpers.normalize_url_for_output(@url)
         <<-HTML
           <div class="onebox video-onebox">
-            <video controls autoplay name="media">
+            <video controls name="media">
               <source src='#{@link}' type="video/mp4">
             </video>
           </div>
