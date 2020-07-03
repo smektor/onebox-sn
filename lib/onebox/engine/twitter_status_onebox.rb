@@ -30,7 +30,7 @@ module Onebox
       end
 
       def add_stimulus_controller(html)
-        '<div data-controller="twitter">' + html + '</div>'
+        '<div class="no-display" data-controller="twitter">' + html + '</div>'
       end
     end
   end

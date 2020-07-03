@@ -29,7 +29,7 @@ module Onebox
       end
 
       def add_stimulus_controller(html)
-        '<div data-controller="instagram">' + html + '</div>'
+        '<div class="no-display" data-controller="instagram">' + html + '</div>'
       end
     end
   end
