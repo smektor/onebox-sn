@@ -30,7 +30,7 @@ module Onebox
 
       def add_stimulus_controller(html)
         return "" unless html
-        '<div class="no-display" data-controller="instagram">' + html + '</div>'
+        '<div class="no-display inst-onebox" data-controller="instagram">' + html + '</div>'
       end
     end
   end

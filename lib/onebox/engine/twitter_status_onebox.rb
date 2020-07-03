@@ -30,7 +30,7 @@ module Onebox
 
       def add_stimulus_controller(html)
         return "" unless html
-        '<div class="no-display" data-controller="twitter">' + html + '</div>'
+        '<div class="no-display tw-onebox" data-controller="twitter">' + html + '</div>'
       end
     end
   end

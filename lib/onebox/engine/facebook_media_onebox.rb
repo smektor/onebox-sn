@@ -34,7 +34,7 @@ module Onebox
 
       def add_stimulus_controller(html)
         return "" unless html
-        '<div class="no-display" data-controller="facebook">' + html + '</div>'
+        '<div class="no-display fb-onebox" data-controller="facebook">' + html + '</div>'
       end
     end
   end
