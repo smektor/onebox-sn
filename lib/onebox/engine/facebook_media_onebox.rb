@@ -6,26 +6,34 @@ module Onebox
       include Engine
       include StandardEmbed
 
-      matches_regexp(/^https?:\/\/.*\.facebook\.com\/(\w+)\/(videos|\?).*/)
+      matches_regexp(/^https?:\/\/.*\.facebook\.com/)
       always_https
 
+      def clean_url
+        url
+      end
+
       def to_html
-        metadata = get_twitter
-        if metadata.present? && metadata[:card] == "player" && metadata[:player].present?
-          <<-HTML
-            <iframe src="#{metadata[:player]}"
-                    width="#{metadata[:player_width]}"
-                    height="#{metadata[:player_height]}"
-                    scrolling="no"
-                    frameborder="0"
-                    allowfullscreen>
-            </iframe>
-          HTML
+        data
+      end
+
+      def data
+        oembed = get_oembed
+        add_stimulus_controller(oembed.html)
+      end
+
+      protected
+
+      def get_oembed_url
+        if /^https?:\/\/www\.facebook\.com\/.*?video(?:s|\.php.*?[?&](?:id|v)=)\/?([^\/&\n]+).*$/.match?(url)
+          oembed_url = "https://www.facebook.com/plugins/video/oembed.json/?url=#{clean_url}"
         else
-          html = Onebox::Engine::WhitelistedGenericOnebox.new(@url, @timeout).to_html
-          return if Onebox::Helpers.blank?(html)
-          html
+          oembed_url = "https://www.facebook.com/plugins/post/oembed.json/?url=#{clean_url}"
         end
+      end
+
+      def add_stimulus_controller(html)
+        '<div class="no-display" data-controller="facebook">' + html + '</div>'
       end
     end
   end

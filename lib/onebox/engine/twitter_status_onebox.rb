@@ -6,11 +6,10 @@ module Onebox
       include Engine
       include StandardEmbed
 
-      matches_regexp(/^https?:\/\/(mobile\.|www\.)?twitter\.com\/.+?\/status(es)?\/\d+(\/(video|photo)\/\d?+)?+(\/?\?.*)?\/?$/)
+      matches_regexp(/^https?:\/\/(mobile\.|www\.)?twitter\.com/)
       always_https
 
       def clean_url
-        # TODO
         url
       end
 
